@@ -17,21 +17,31 @@ go get -tool github.com/befabri/token-lint@latest
 ## Usage
 
 ```bash
+# If installed via go install
+token-lint ./...
+
+# If installed via go get -tool
+go tool token-lint ./...
+```
+
+### Examples
+
+```bash
 # Check all Go files recursively
-tokenlint ./...
+token-lint ./...
 
 # Check specific file or directory
-tokenlint path/to/file.go
-tokenlint path/to/dir/...
+token-lint path/to/file.go
+token-lint path/to/dir/...
 
 # Show all files sorted by token count
-tokenlint -all ./...
+token-lint -all ./...
 
 # Custom threshold (default: 25000)
-tokenlint -threshold 20000 ./...
+token-lint -threshold 20000 ./...
 
 # Custom tokens-per-character ratio
-tokenlint -ratio 0.65 ./...
+token-lint -ratio 0.65 ./...
 ```
 
 ## How it works
@@ -52,7 +62,7 @@ Files matching these patterns are skipped by default:
 ## Example output
 
 ```
-$ tokenlint -all ./...
+$ token-lint -all ./...
 FILE                                         TOKENS    CHARS
 --------------------------------------------------------------
 pkg/server/handler.go                         32000    49230 <- EXCEEDS LIMIT
